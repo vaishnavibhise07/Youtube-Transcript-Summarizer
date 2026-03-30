@@ -1,4 +1,4 @@
 Requirements:
--Flask
--youtube-transcript-api
--sumy
+ -Flask
+ -youtube-transcript-api
+ -sumy
