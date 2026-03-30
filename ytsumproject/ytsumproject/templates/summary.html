@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .container {
+            max-width: 650px; /* Adjust this value as needed */
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .video-thumbnail img {
+            max-width: 60%; /* Ensure the thumbnail fits inside its container */
+            height: auto;
+            display: block;
+            margin: 0 auto 20px; /* Add some bottom margin for spacing */
+        }
+        h1 {
+            text-align: center; /* Center the title */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Summary</h1>
+        <div class="video-thumbnail">
+            <a href="{{ video_url }}" target="_blank"><img src="{{ video_thumbnail }}" alt="Video Thumbnail"></a>
+        </div>
+        <p>{{ summary }}</p>
+        <p>Number of words in the summary: {{ num_words }}</p>
+        
+        <form action="/download_summary" method="post">
+            <input type="hidden" name="summary" value="{{ summary }}">
+            <button type="submit" style="color: white;">Download Summary</button>
+        </form>
+    </div>
+</body>
+</html>

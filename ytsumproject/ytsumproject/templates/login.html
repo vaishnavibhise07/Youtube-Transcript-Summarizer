@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register</title>
+    <style>
+        /* CSS styling */
+        body {
+            background-image: linear-gradient(40deg,
+                    hsl(240deg 56% 48%) 0%,
+                    hsl(250deg 48% 49%) 10%,
+                    hsl(260deg 40% 49%) 24%,
+                    hsl(271deg 34% 50%) 42%,
+                    hsl(285deg 28% 50%) 57%,
+                    hsl(305deg 24% 50%) 68%,
+                    hsl(325deg 29% 54%) 75%,
+                    hsl(340deg 34% 58%) 81%,
+                    hsl(354deg 40% 62%) 85%,
+                    hsl(358deg 39% 63%) 89%,
+                    hsl(353deg 31% 62%) 92%,
+                    hsl(345deg 22% 61%) 94%,
+                    hsl(330deg 14% 60%) 96%,
+                    hsl(284deg 9% 60%) 97%,
+                    hsl(232deg 12% 62%) 98%,
+                    hsl(212deg 22% 61%) 99%,
+                    hsl(204deg 32% 60%) 100%,
+                    hsl(200deg 41% 58%) 100%);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            width: 400px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            transition: height 0.5s ease;
+        }
+        .login-box {
+            padding: 20px;
+            transition: opacity 0.5s ease;
+        }
+        .hidden {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        label {
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .next-log {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .next-log:hover {
+            color: #0056b3;
+        }
+        .top-scroll {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <i class="fa fa-times" id="btn-close"></i>
+        <div class="login-box">
+            <form>
+                <h2>Login</h2>
+                <label for="log-mail">
+                    <i class="fa fa-envelope-o"></i>
+                    <input type="email" name="mail" id="log-mail" required placeholder="Your Email">
+                </label>
+                <label for="log-pass">
+                    <i class="fa fa-lock"></i>
+                    <input type="password" name="pass" id="log-pass" required placeholder="Your Password">
+                </label>
+                <label for="chk" class="check">
+                    <input type="checkbox" name="chk" id="chk">
+                    Remember me
+                </label>
+                <button type="submit">Login</button>
+                <p>Or login with</p>
+                <a href="#" class="btn btn-fb">
+                    <i class="fa fa-facebook"></i>
+                    Facebook
+                </a>
+                <a href="#" class="btn btn-gg">
+                    <i class="fa fa-google"></i>
+                    Google
+                </a>
+                <p>Not a member? <a href="#" class="next-log">Register Now</a></p>
+            </form>
+        </div>
+        <div class="login-box hidden" id="res">
+            <form>
+                <h2>Register</h2>
+                <label for="res-user">
+                    <i class="fa fa-user"></i>
+                    <input type="text" name="user" id="res-user" required placeholder="User Name">
+                </label>
+                <label for="res-mail">
+                    <i class="fa fa-envelope-o"></i>
+                    <input type="email" name="mail" id="res-mail" required placeholder="Your Email">
+                </label>
+                <label for="res-pass">
+                    <i class="fa fa-lock"></i>
+                    <input type="password" name="pass" id="res-pass" required placeholder="Your Password">
+                </label>
+                <label for="res-cfpass">
+                    <i class="fa fa-lock"></i>
+                    <input type="password" name="cfpass" id="res-cfpass" required placeholder="Confirm Password">
+                </label>
+                <label for="chk1" class="check">
+                    <input type="checkbox" name="chk1" id="chk1">
+                    I accept <span>Terms of User</span> & <span>Privacy Policy</span>
+                </label>
+                <button type="submit">Register</button>
+                <p>Already have an account? <a href="#" class="next-log">Login now</a></p>
+            </form>
+        </div>
+    </div>
+    <div class="top-scroll">
+        <a href="#">&#11165; </a>
+    </div>
+
+    <script>
+        const loginMenu = document.querySelector('header .active');
+        const loginShow = document.querySelector('.login-container');
+        const btnClose = document.querySelector('#btn-close');
+        loginMenu.addEventListener('click', () => {
+            loginShow.style.clipPath = 'circle(100% at 50% 50%)';
+        });
+        btnClose.addEventListener('click', () => {
+            loginShow.style.clipPath = 'circle(0 at 50% 50%)';
+        });
+        const btnToggle = document.querySelectorAll('.next-log');
+        const resForm = document.querySelector('#res'); 
+        btnToggle.forEach(item => {
+            item.addEventListener('click', () => {
+                resForm.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

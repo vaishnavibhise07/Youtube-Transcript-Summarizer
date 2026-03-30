@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs</title>
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(40deg,
+                    hsl(240deg 56% 48%) 0%,
+                    hsl(250deg 48% 49%) 10%,
+                    hsl(260deg 40% 49%) 24%,
+                    hsl(271deg 34% 50%) 42%,
+                    hsl(285deg 28% 50%) 57%,
+                    hsl(305deg 24% 50%) 68%,
+                    hsl(325deg 29% 54%) 75%,
+                    hsl(340deg 34% 58%) 81%,
+                    hsl(354deg 40% 62%) 85%,
+                    hsl(358deg 39% 63%) 89%,
+                    hsl(353deg 31% 62%) 92%,
+                    hsl(345deg 22% 61%) 94%,
+                    hsl(330deg 14% 60%) 96%,
+                    hsl(284deg 9% 60%) 97%,
+                    hsl(232deg 12% 62%) 98%,
+                    hsl(212deg 22% 61%) 99%,
+                    hsl(204deg 32% 60%) 100%,
+                    hsl(200deg 41% 58%) 100%);
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f8f8f885;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            overflow-y: auto; /* Enable vertical scroll */
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 50px; /* Adjust top margin */
+            margin-bottom: 20px;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f1f1f1;
+        }
+
+        .question {
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .answer {
+            color: #666;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Frequently Asked Questions</h1>
+
+<div class="container">
+
+    <div class="faq-item">
+        <div class="question">Q: How does the YouTube transcript summarizer work?</div>
+        <div class="answer">A: The YouTube transcript summarizer uses hugging transformer to analyze the transcript of a YouTube video and generate a concise summary of its content.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Q: Can I summarize any YouTube video?</div>
+        <div class="answer">A: Yes, you can summarize any publicly available YouTube video as long as it has a transcript.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Q: How accurate are the summaries?</div>
+        <div class="answer">A: The accuracy of the summaries depends on various factors such as the quality of the transcript and the complexity of the video content. While the summarizer strives to provide accurate summaries, it may not always capture every detail of the video.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Q: Is the summarization process instantaneous?</div>
+        <div class="answer">A: The summarization process may take some time depending on the length of the video and the processing power of the system. However, efforts are made to optimize the summarization process for efficiency.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Q: Can I customize the length of the summary?</div>
+        <div class="answer">A: Yes, the summary is provided in paragraph and you can adjust its size: small, medium or large.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Q: Is the summarization process privacy-friendly?</div>
+        <div class="answer">A: Yes, the summarization process is designed to respect user privacy. The transcript data is processed locally on the user's device, and no personal information is collected or stored during the process.</div>
+    </div>
+
+</div>
+
+</body>
+</html>

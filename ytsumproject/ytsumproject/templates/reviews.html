@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <!--Stylesheet-->
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: linear-gradient(40deg,
+                    hsl(240deg 56% 48%) 0%,
+                    hsl(250deg 48% 49%) 10%,
+                    hsl(260deg 40% 49%) 24%,
+                    hsl(271deg 34% 50%) 42%,
+                    hsl(285deg 28% 50%) 57%,
+                    hsl(305deg 24% 50%) 68%,
+                    hsl(325deg 29% 54%) 75%,
+                    hsl(340deg 34% 58%) 81%,
+                    hsl(354deg 40% 62%) 85%,
+                    hsl(358deg 39% 63%) 89%,
+                    hsl(353deg 31% 62%) 92%,
+                    hsl(345deg 22% 61%) 94%,
+                    hsl(330deg 14% 60%) 96%,
+                    hsl(284deg 9% 60%) 97%,
+                    hsl(232deg 12% 62%) 98%,
+                    hsl(212deg 22% 61%) 99%,
+                    hsl(204deg 32% 60%) 100%,
+                    hsl(200deg 41% 58%) 100%);
+            background-repeat: no-repeat;
+            height: 100vh;
+            overflow-y: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .testimonial-heading {
+            letter-spacing: 1px;
+            margin: 30px 0px;
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .testimonial-heading h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            background-color: transparent;
+            color: #ffffff;
+            padding: 10px 20px;
+        }
+
+        .testimonial-heading span {
+            font-size: 1.3rem;
+            color: #252525;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .testimonial-box-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            width: 100%;
+            gap: 20px;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-box {
+            width: calc(50% - 10px); /* Half of the container width minus gap */
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Black shadow */
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+            padding: 20px;
+            border-radius: 20px; /* Rounded corners */
+        }
+
+        .testimonial-box:last-child {
+            margin-right: 0;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .name-user {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .name-user strong {
+            color: #3d3d3d;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .name-user span {
+            color: #979797;
+            font-size: 0.8rem;
+        }
+
+        .reviews {
+            color: #f9d71c;
+        }
+
+        .box-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .client-comment p {
+            font-size: 0.9rem;
+            color: #4b4b4b;
+        }
+
+        .testimonial-box:hover {
+            transform: translateY(-5px);
+        }
+
+        ::selection {
+            color: #ffffff;
+            background-color: #252525;
+        }
+
+        /* Review form styles */
+        .write-review {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Black shadow */
+            border-radius: 20px;
+        }
+
+        .write-review h2 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .write-review input[type="text"],
+        .write-review textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .write-review input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50; /* Green */
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Star rating styles */
+        .stars {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .stars i {
+            font-size: 24px;
+            color: #f9d71c;
+            cursor: pointer;
+        }
+
+        .stars i:hover,
+        .stars i:hover ~ i {
+            color: #ffd700;
+        }
+    </style>
+    <!--Fav-icon-->
+    <link rel="shortcut icon" href="images/fav-icon.png"/>
+    <!--using-Font-Awesome-->
+    <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!--Testimonials-->
+    <section id="testimonials">
+        <!-- Testimonial boxes -->
+        <div class="testimonial-box-container">
+            <!-- Left side review box -->
+            <div class="testimonial-box">
+                <!--top-->
+                <div class="box-top">
+                    <!--profile-->
+                    <div class="profile">
+                        <!--name-and-username-->
+                        <div class="name-user">
+                            <strong>Touseeq Ijaz</strong>
+                            <span>@touseeqijazweb</span>
+                        </div>
+                    </div>
+                    <!--reviews-->
+                    <div class="reviews">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i><!--Empty star-->
+                    </div>
+                </div>
+                <!--Comments-->
+                <div class="client-comment">
+                    <p>Simple, efficient, and effective. This YouTube transcript summarizer is exactly what I needed to streamline my video research. 5 stars!</p>
+                </div>
+            </div>
+            <!-- Right side review box -->
+            <div class="testimonial-box">
+                <!--top-->
+                <div class="box-top">
+                    <!--profile-->
+                    <div class="profile">
+                        <!--name-and-username-->
+                        <div class="name-user">
+                            <strong>J.K Rowling</strong>
+                            <span>@jkrowling</span>
+                        </div>
+                    </div>
+                    <!--reviews-->
+                    <div class="reviews">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i><!--Empty star-->
+                    </div>
+                </div>
+                <!--Comments-->
+                <div class="client-comment">
+                    <p>As a student, this YouTube transcript summarizer is a lifesaver! Quick, accurate, and essential for my studies</p>
+                </div>
+            </div>
+            <!-- Left side review box -->
+            <div class="testimonial-box">
+                <!--top-->
+                <div class="box-top">
+                    <!--profile-->
+                    <div class="profile">
+                        <!--name-and-username-->
+                        <div class="name-user">
+                            <strong>Harry Potter</strong>
+                            <span>@DanielRedclief</span>
+                        </div>
+                    </div>
+                    <!--reviews-->
+                    <div class="reviews">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i><!--Empty star-->
+                    </div>
+                </div>
+                <!--Comments-->
+                <div class="client-comment">
+                    <p>This YouTube transcript summarizer is a game-changer! Makes reviewing videos a breeze.</p>
+                </div>
+            </div>
+            <!-- Right side review box -->
+            <div class="testimonial-box">
+                <!--top-->
+                <div class="box-top">
+                    <!--profile-->
+                    <div class="profile">
+                        <!--name-and-username-->
+                        <div class="name-user">
+                            <strong>Oliva</strong>
+                            <span>@Olivaadward</span>
+                        </div>
+                    </div>
+                    <!--reviews-->
+                    <div class="reviews">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i><!--Empty star-->
+                    </div>
+                </div>
+                <!--Comments-->
+                <div class="client-comment">
+                    <p>Love this YouTube transcript summarizer! It's a real time-saver for content creators like me. Highly recommended!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Write a Review -->
+        <div class="write-review">
+            <h2>Write a Review</h2>
+            <form id="reviewForm">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <textarea id="comment" placeholder="Your Review" required></textarea>
+                <div class="rating">
+                    <label for="stars">Rating:</label>
+                    <div class="stars" id="stars">
+                        <i class="far fa-star" data-rating="1"></i>
+                        <i class="far fa-star" data-rating="2"></i>
+                        <i class="far fa-star" data-rating="3"></i>
+                        <i class="far fa-star" data-rating="4"></i>
+                        <i class="far fa-star" data-rating="5"></i>
+                    </div>
+                </div>
+                <button type="submit">Submit Review</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Script for star rating -->
+    <script>
+        const stars = document.querySelectorAll('.stars i');
+
+        stars.forEach((star) => {
+            star.addEventListener('click', () => {
+                const rating = parseInt(star.getAttribute('data-rating'));
+                for (let i = 0; i < stars.length; i++) {
+                    if (i < rating) {
+                        stars[i].classList.remove('far');
+                        stars[i].classList.add('fas');
+                    } else {
+                        stars[i].classList.remove('fas');
+                        stars[i].classList.add('far');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
